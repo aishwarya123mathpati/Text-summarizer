@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        textarea, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text Summarizer</h1>
+    <form method="POST">
+        <label for="text">Enter your text:</label>
+        <textarea name="text" id="text" rows="10" required>{{ original_text }}</textarea>
+        <label for="num_sentences">Number of sentences in summary:</label>
+        <input type="number" name="num_sentences" id="num_sentences" min="1" value="{{ num_sentences }}" required>
+        <input type="submit" value="Summarize">
+    </form>
+    {% if summary %}
+    <div class="result">
+        <h2>Summary:</h2>
+        <p>{{ summary }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
+
